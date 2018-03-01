@@ -33,5 +33,15 @@
   font-size: font-size(body);
   border: 1px dashed color(gray, lighter);
   margin-left: spacing(loose);
+  margin-bottom: spacing(tight);
   font-family: inherit;
+}
+
+.formSubmit {
+  font-size: 1.4rem;
+  font-family: inherit;
+  padding: 10px;
+  background: none;
+  display: block;
+  margin-top: spacing(extra-loose);
 }

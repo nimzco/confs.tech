@@ -68,6 +68,7 @@ export default class ConferenceNewPage extends Component {
             Twitter handle:
             <input className={styles.formInput} type="text" id="Twitter" />
           </label>
+          <button className={styles.formSubmit} type="submit" value="Submit">Submit</button>
         </form>
       </div>
     );
