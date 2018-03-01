@@ -15,21 +15,15 @@ export default class ConferenceNewPage extends Component {
     startDate: null,
   };
 
-  handleEndDateChange = (date) => {
+  handleDateChange = (key, date) => {
     this.setState({
-      endDate: date,
-    });
-  };
-
-  handleStartDateChange = (date) => {
-    this.setState({
-      startDate: date,
+      [key]: date,
     });
   };
 
   submitForm = (event) => {
     event.preventDefault();
-    console.log('wat');
+    console.log(this.state);
   };
 
   render() {
@@ -66,7 +60,7 @@ export default class ConferenceNewPage extends Component {
               className={styles.formInput}
               id="startDate"
               selected={this.state.startDate}
-              onChange={this.handleStartDateChange}
+              onChange={this.handleDateChange.bind(this, 'startDate')}
             />
           </div>
           <br />
@@ -79,7 +73,7 @@ export default class ConferenceNewPage extends Component {
               className={styles.formInput}
               id="endDate"
               selected={this.state.endDate}
-              onChange={this.handleEndDateChange}
+              onChange={this.handleDateChange.bind(this, 'endDate')}
             />
           </div>
 
@@ -105,9 +99,9 @@ export default class ConferenceNewPage extends Component {
           <div className={styles.formDatePicker}>
             <DatePicker
               className={styles.formInput}
-              id="endDate"
-              selected={this.state.endDate}
-              onChange={this.handleEndDateChange}
+              id="cfpEndDate"
+              selected={this.state.cfpEndDate}
+              onChange={this.handleDateChange.bind(this, 'cfpEndDate')}
             />
           </div>
           <br />
