@@ -12,10 +12,34 @@ import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 export default class ConferenceNewPage extends Component {
   state = {
     endDate: null,
+    name: '',
     startDate: null,
   };
 
+<<<<<<< HEAD
   handleDateChange = (key, date) => {
+=======
+  canBeSubmitted() {
+    const errors = this.validate(this.state.name);
+    const isDisabled = Object.keys(errors).some((x) => errors[x]);
+    return !isDisabled;
+  }
+
+  validate = (name) => {
+    // true means invalid, so our conditions got reversed
+    return {
+      name: name.length === 0,
+    };
+  };
+
+  handleNameChange = (evt) => {
+    this.setState({
+      name: evt.target.value,
+    });
+  };
+
+  handleEndDateChange = (date) => {
+>>>>>>> test add validation
     this.setState({
       [key]: date,
     });
@@ -23,10 +47,22 @@ export default class ConferenceNewPage extends Component {
 
   submitForm = (event) => {
     event.preventDefault();
+<<<<<<< HEAD
     console.log(this.state);
+=======
+    console.log('wat');
+    if (!this.canBeSubmitted()) {
+      event.preventDefault();
+      console.log('error here');
+      return;
+    }
+>>>>>>> test add validation
   };
 
   render() {
+    const errors = this.validate(this.state.name);
+    const isDisabled = Object.keys(errors).some((x) => errors[x]);
+
     return (
       <div>
         <Helmet>
@@ -39,7 +75,13 @@ export default class ConferenceNewPage extends Component {
         <form>
           <label htmlFor="name" className={styles.formLabel}>
             Name:
-            <input className={styles.formInput} type="text" id="name" />
+            <input
+              className={errors.email ? styles.error : styles.formInput}
+              type="text"
+              id="name"
+              required
+              onChange={this.handleNameChange}
+            />
           </label>
           <br />
           <label htmlFor="url" className={styles.formLabel}>
@@ -109,7 +151,14 @@ export default class ConferenceNewPage extends Component {
             Twitter handle:
             <input className={styles.formInput} type="text" id="twitter" />
           </label>
-          <button className={styles.formSubmit} type="submit" value="Submit" onClick={this.submitForm}>Submit</button>
+          <button
+            className={styles.formSubmit}
+            type="submit"
+            value="Submit"
+            onClick={this.submitForm}
+          >
+            Submit
+          </button>
         </form>
       </div>
     );
