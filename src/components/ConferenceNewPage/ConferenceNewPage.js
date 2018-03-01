@@ -1,12 +1,31 @@
 import React, {Component} from 'react';
 import {Helmet} from 'react-helmet';
+import DatePicker from 'react-datepicker';
+// import moment from 'moment';
 
 import styles from './ConferenceNewPage.scss';
 import GithubStar from '../GithubStar';
 import Heading from '../Heading';
 
+import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+
 export default class ConferenceNewPage extends Component {
-  state = {};
+  state = {
+    endDate: null,
+    startDate: null,
+  };
+
+  handleEndDateChange = (date) => {
+    this.setState({
+      endDate: date,
+    });
+  };
+
+  handleStartDateChange = (date) => {
+    this.setState({
+      startDate: date,
+    });
+  };
 
   render() {
     return (
@@ -25,7 +44,7 @@ export default class ConferenceNewPage extends Component {
           </label>
           <br />
           <label htmlFor="url" className={styles.formLabel}>
-              URL:
+            URL:
             <input className={styles.formInput} type="text" id="url" />
           </label>
           <br />
@@ -36,13 +55,29 @@ export default class ConferenceNewPage extends Component {
           <br />
           <label htmlFor="startDate" className={styles.formLabel}>
             Start date:
-            <input className={styles.formInput} type="text" id="startDate" />
           </label>
+          <div className={styles.formDatepicker}>
+            <DatePicker
+              className={styles.formInput}
+              id="startDate"
+              selected={this.state.startDate}
+              onChange={this.handleStartDateChange}
+            />
+          </div>
           <br />
           <label htmlFor="endDate" className={styles.formLabel}>
             End date:
-            <input className={styles.formInput} type="text" id="endDate" />
           </label>
+
+          <div className={styles.formDatepicker}>
+            <DatePicker
+              className={styles.formInput}
+              id="endDate"
+              selected={this.state.endDate}
+              onChange={this.handleEndDateChange}
+            />
+          </div>
+
           <br />
           <label htmlFor="city" className={styles.formLabel}>
             City:
@@ -68,7 +103,9 @@ export default class ConferenceNewPage extends Component {
             Twitter handle:
             <input className={styles.formInput} type="text" id="Twitter" />
           </label>
-          <button className={styles.formSubmit} type="submit" value="Submit">Submit</button>
+          <button className={styles.formSubmit} type="submit" value="Submit">
+            Submit
+          </button>
         </form>
       </div>
     );

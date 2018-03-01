@@ -45,3 +45,11 @@
   display: block;
   margin-top: spacing(extra-loose);
 }
+
+.formDatepicker {
+  display: inline-block;
+}
+
+:global(.react-datepicker-wrapper) {
+  // background-color: red;
+}
