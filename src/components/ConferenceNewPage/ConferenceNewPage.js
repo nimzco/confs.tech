@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Helmet} from 'react-helmet';
 import DatePicker from 'react-datepicker';
-// import moment from 'moment';
 
 import styles from './ConferenceNewPage.scss';
 import GithubStar from '../GithubStar';
@@ -9,6 +8,7 @@ import Heading from '../Heading';
 
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
+/* eslint-disable */
 export default class ConferenceNewPage extends Component {
   state = {
     endDate: null,
@@ -25,6 +25,11 @@ export default class ConferenceNewPage extends Component {
     this.setState({
       startDate: date,
     });
+  };
+
+  submitForm = (event) => {
+    event.preventDefault();
+    console.log('wat');
   };
 
   render() {
@@ -99,13 +104,11 @@ export default class ConferenceNewPage extends Component {
             <input className={styles.formInput} type="text" id="cfpEndDate" />
           </label>
           <br />
-          <label htmlFor="Twitter" className={styles.formLabel}>
+          <label htmlFor="twitter" className={styles.formLabel}>
             Twitter handle:
-            <input className={styles.formInput} type="text" id="Twitter" />
+            <input className={styles.formInput} type="text" id="twitter" />
           </label>
-          <button className={styles.formSubmit} type="submit" value="Submit">
-            Submit
-          </button>
+          <button className={styles.formSubmit} type="submit" value="Submit" onClick={this.submitForm}>Submit</button>
         </form>
       </div>
     );
