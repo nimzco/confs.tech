@@ -98,6 +98,7 @@ function Year({year}) {
       <Heading key={year} element="h2" level={2}>
         {year}
       </Heading>
+      <AddConferenceLink />
     </div>
   );
 }
@@ -106,6 +107,16 @@ function getConfsMonthsSorted(conferences) {
   return _sortBy(Object.keys(conferences), (conference) => {
     return parseInt(conference.replace('-', ''), 10);
   });
+}
+
+function AddConferenceLink() {
+  return (
+    <div className={styles.AddConfPanelWrapper}>
+      <Link url="/new" routed>
+        Add a conference
+      </Link>
+    </div>
+  );
 }
 
 export default connectHits(ConferenceList);

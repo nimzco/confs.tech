@@ -1,0 +1,11 @@
+@import '../style/foundation/typography';
+@import '../style/foundation/colors';
+@import '../style/foundation/spacing';
+
+.Header,
+.CfpHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

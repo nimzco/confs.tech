@@ -44,6 +44,7 @@ class ConferencePage extends Component {
     });
   };
 
+<<<<<<< HEAD
   onSearchStateChange = (searchState) => {
     this.setState({
       refinementList: searchState.refinementList,
@@ -57,6 +58,27 @@ class ConferencePage extends Component {
         history.push(`${startURL}/${topics[0]}`);
       } else {
         history.push(`${startURL}/`);
+=======
+  render() {
+    const {
+      loading,
+      conferences,
+      showPast,
+      sortBy,
+      filters,
+      filters: {type, country},
+    } = this.state;
+    const {showCFP} = this.props;
+    const conferencesFilteredByDate = filterConferencesByDate(conferences, showPast);
+    const filteredConferences = this.filterConferences(conferencesFilteredByDate);
+
+    // Fallback is only defined for `/:type/:country` paths.
+    // Avoids displaying an error when looking for a country with no conf for `type` yet.
+    if (!loading && filteredConferences.length === 0) {
+      const {fallback} = this.props;
+      if (typeof fallback === 'function') {
+        return fallback(type);
+>>>>>>> Add new conference route
       }
     });
   };
@@ -120,10 +142,31 @@ class ConferencePage extends Component {
             sortBy={sortBy}
             showCFP={showCFP}
           />
+<<<<<<< HEAD
         </InstantSearch>
 
         <Footer
           showCFP={showCFP}
+=======
+        </div>
+        <div>
+          {showCFP
+            ? <CfpHeader sortByCfpEndDate={this.sortByCfpEndDate} sortBy={sortBy} />
+            : null
+          }
+          {loading
+            ? Loader()
+            : <ConferenceList
+              sortBy={sortBy}
+              showCFP={showCFP}
+              conferences={filteredConferences}
+              />
+          }
+        </div>
+        <Footer
+          showCFP={showCFP}
+          filters={filters}
+>>>>>>> Add new conference route
           togglePast={this.togglePast}
           showPast={showPast}
         />

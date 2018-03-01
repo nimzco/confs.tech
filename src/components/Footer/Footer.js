@@ -10,6 +10,9 @@ export default function Footer({showCFP, togglePast, showPast}) {
     <footer className={styles.Footer}>
       <HiddenLinks />
       <p className={styles.FooterLinks}>
+        <Link url="/new" routed>
+          Add a conference
+        </Link>
         <Link selected={showPast} onClick={togglePast}>
           {showPast ? 'Hide past conferences' : 'See past conferences'}
         </Link>
