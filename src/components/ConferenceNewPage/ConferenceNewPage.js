@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-// import Favicon from 'react-favicon';
 import {Helmet} from 'react-helmet';
 
 import styles from './ConferenceNewPage.scss';
@@ -20,74 +19,54 @@ export default class ConferenceNewPage extends Component {
           <GithubStar />
         </div>
         <form>
-          <label htmlFor="name">
-            <Heading element="h2" level={3}>
-              Name
-            </Heading>
-            <input type="text" id="name" />
+          <label htmlFor="name" className={styles.formLabel}>
+            Name:
+            <input className={styles.formInput} type="text" id="name" />
           </label>
-
-          <label htmlFor="url">
-            <Heading element="h2" level={3}>
-              URL
-            </Heading>
-            <input type="text" id="url" />
+          <br />
+          <label htmlFor="url" className={styles.formLabel}>
+              URL:
+            <input className={styles.formInput} type="text" id="url" />
           </label>
-
-          <label htmlFor="type">
-            <Heading element="h2" level={3}>
-              Discipline
-            </Heading>
-            <input type="text" id="type" />
+          <br />
+          <label htmlFor="type" className={styles.formLabel}>
+            Discipline:
+            <input className={styles.formInput} type="text" id="type" />
           </label>
-
-          <label htmlFor="startDate">
-            <Heading element="h2" level={3}>
-              Start date
-            </Heading>
-            <input type="text" id="startDate" />
+          <br />
+          <label htmlFor="startDate" className={styles.formLabel}>
+            Start date:
+            <input className={styles.formInput} type="text" id="startDate" />
           </label>
-
-          <label htmlFor="endDate">
-            <Heading element="h2" level={3}>
-              End date
-            </Heading>
-            <input type="text" id="endDate" />
+          <br />
+          <label htmlFor="endDate" className={styles.formLabel}>
+            End date:
+            <input className={styles.formInput} type="text" id="endDate" />
           </label>
-
-          <label htmlFor="city">
-            <Heading element="h2" level={3}>
-              City
-            </Heading>
-            <input type="text" id="city" />
+          <br />
+          <label htmlFor="city" className={styles.formLabel}>
+            City:
+            <input className={styles.formInput} type="text" id="city" />
           </label>
-
-          <label htmlFor="country">
-            <Heading element="h2" level={3}>
-              Country
-            </Heading>
-            <input type="text" id="country" />
+          <br />
+          <label htmlFor="country" className={styles.formLabel}>
+            Country:
+            <input className={styles.formInput} type="text" id="country" />
           </label>
-
-          <label htmlFor="country">
-            <Heading element="h2" level={3}>
-              CFP URL
-            </Heading>
-            <input type="text" id="country" />
+          <br />
+          <label htmlFor="cfpUrl" className={styles.formLabel}>
+            CFP URL:
+            <input className={styles.formInput} type="text" id="cfpUrl" />
           </label>
-
-          <label htmlFor="country">
-            <Heading element="h2" level={3}>
-              CFP end date
-            </Heading>
-            <input type="text" id="country" />
+          <br />
+          <label htmlFor="cfpEndDate" className={styles.formLabel}>
+            CFP end date:
+            <input className={styles.formInput} type="text" id="cfpEndDate" />
           </label>
-
-          <label htmlFor="twitterHandle">
-            <Heading element="h2" level={3}>
-              Twitter handle
-            </Heading>
-            <input type="text" id="twitterHandle" />
+          <br />
+          <label htmlFor="Twitter" className={styles.formLabel}>
+            Twitter handle:
+            <input className={styles.formInput} type="text" id="Twitter" />
           </label>
         </form>
       </div>

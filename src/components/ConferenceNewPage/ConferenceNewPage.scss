@@ -9,3 +9,29 @@
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
+.formLabel {
+  font-size: 1.5em;
+  margin-top: spacing(base);
+  margin-bottom: spacing(base);
+  position: relative;
+}
+
+.formLabel::after {
+  content: '';
+  position: absolute;
+  bottom: 3px;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 8px;
+  background: color(accent-2);
+}
+
+.formInput {
+  padding: 10px;
+  font-size: font-size(body);
+  border: 1px dashed color(gray, lighter);
+  margin-left: spacing(loose);
+  font-family: inherit;
+}
