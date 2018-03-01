@@ -61,7 +61,7 @@ export default class ConferenceNewPage extends Component {
           <label htmlFor="startDate" className={styles.formLabel}>
             Start date:
           </label>
-          <div className={styles.formDatepicker}>
+          <div className={styles.formDatePicker}>
             <DatePicker
               className={styles.formInput}
               id="startDate"
@@ -74,7 +74,7 @@ export default class ConferenceNewPage extends Component {
             End date:
           </label>
 
-          <div className={styles.formDatepicker}>
+          <div className={styles.formDatePicker}>
             <DatePicker
               className={styles.formInput}
               id="endDate"
@@ -101,8 +101,15 @@ export default class ConferenceNewPage extends Component {
           <br />
           <label htmlFor="cfpEndDate" className={styles.formLabel}>
             CFP end date:
-            <input className={styles.formInput} type="text" id="cfpEndDate" />
           </label>
+          <div className={styles.formDatePicker}>
+            <DatePicker
+              className={styles.formInput}
+              id="endDate"
+              selected={this.state.endDate}
+              onChange={this.handleEndDateChange}
+            />
+          </div>
           <br />
           <label htmlFor="twitter" className={styles.formLabel}>
             Twitter handle:
