@@ -190,4 +190,14 @@
     "country": "U.K.",
     "twitter": "@brightonruby"
   }
+  {
+    "name": "Dummy Ruby",
+    "url": "https://dummyruby.com/",
+    "startDate": "2018-07-06",
+    "endDate": "2018-07-06",
+    "city": "Montreal",
+    "country": "CA",
+    "twitter": "@manumilou"
+  }
+
 ]
