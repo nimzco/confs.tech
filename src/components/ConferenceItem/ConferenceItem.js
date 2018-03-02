@@ -1,5 +1,4 @@
 import React, {PureComponent} from 'react';
-import classNames from 'classnames';
 import {parse} from 'date-fns';
 
 import {formatDate, generateEventJSONLD} from './utils';
@@ -24,11 +23,7 @@ export default class ConferenceItem extends PureComponent {
     } = this.props;
 
     return (
-      <div
-        className={classNames(
-          styles.ConferenceItem
-        )}
-      >
+      <div className={styles.ConferenceItem}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{__html: generateEventJSONLD({name, url, city, country, startDate, endDate})}}
