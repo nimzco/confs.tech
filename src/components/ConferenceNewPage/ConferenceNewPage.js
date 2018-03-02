@@ -12,30 +12,47 @@ import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 /* eslint-disable */
 export default class ConferenceNewPage extends Component {
   state = {
+    cfpUrl: '',
+    city: '',
+    country: '',
     endDate: null,
     name: '',
+    url: '',
     startDate: null,
+    twitterHandle: '',
   };
 
 <<<<<<< HEAD
   handleDateChange = (key, date) => {
 =======
   canBeSubmitted() {
-    const errors = this.validate(this.state.name);
+    const errors = this.validate(
+      this.state.name,
+      this.state.url,
+      this.state.city,
+      this.state.country,
+      this.state.cfpUrl,
+      this.state.twitterHandle
+    );
     const isDisabled = Object.keys(errors).some((x) => errors[x]);
     return !isDisabled;
   }
 
-  validate = (name) => {
+  validate = (name, url, city, country, cfpUrl, twitterHandle) => {
     // true means invalid, so our conditions got reversed
     return {
+      cfpUrl: cfpUrl.length === 0,
+      city: city.length === 0,
+      country: country.length === 0,
       name: name.length === 0,
+      twitterHandle: twitterHandle.length === 0,
+      url: url.length === 0,
     };
   };
 
-  handleNameChange = (evt) => {
+  handleTextfieldChange = (key, event) => {
     this.setState({
-      name: evt.target.value,
+      [key]: event.target.value,
     });
   };
 
@@ -61,7 +78,22 @@ export default class ConferenceNewPage extends Component {
   };
 
   render() {
-    const errors = this.validate(this.state.name);
+    const errors = this.validate(
+      this.state.name,
+      this.state.url,
+      this.state.city,
+      this.state.country,
+      this.state.cfpUrl,
+      this.state.twitterHandle
+    );
+
+    const shouldMarkError = (field) => {
+      const hasError = errors[field];
+      // const shouldShow = this.state.touched[field];
+
+      // return hasError ? shouldShow : false;
+      return hasError;
+    };
     const isDisabled = Object.keys(errors).some((x) => errors[x]);
 
     return (
@@ -74,20 +106,36 @@ export default class ConferenceNewPage extends Component {
           <GithubStar />
         </div>
         <form>
+          <pre>{JSON.stringify(errors)}</pre>
           <label htmlFor="name" className={styles.formLabel}>
             Name:
             <input
-              className={errors.email ? styles.error : styles.formInput}
+              className={
+                shouldMarkError('name')
+                  ? styles.error + ' ' + styles.formInput
+                  : styles.formInput
+              }
               type="text"
               id="name"
               required
-              onChange={this.handleNameChange}
+              value={this.state.name}
+              onChange={this.handleTextfieldChange.bind(this, 'name')}
             />
           </label>
           <br />
           <label htmlFor="url" className={styles.formLabel}>
             URL:
-            <input className={styles.formInput} type="text" id="url" />
+            <input
+              className={
+                shouldMarkError('url')
+                  ? styles.error + ' ' + styles.formInput
+                  : styles.formInput
+              }
+              type="text"
+              value={this.state.url}
+              id="url"
+              onChange={this.handleTextfieldChange.bind(this, 'url')}
+            />
           </label>
           <br />
           <label htmlFor="type" className={styles.formLabel}>
@@ -123,17 +171,47 @@ export default class ConferenceNewPage extends Component {
           <br />
           <label htmlFor="city" className={styles.formLabel}>
             City:
-            <input className={styles.formInput} type="text" id="city" />
+            <input
+              className={
+                shouldMarkError('city')
+                  ? styles.error + ' ' + styles.formInput
+                  : styles.formInput
+              }
+              type="text"
+              id="city"
+              value={this.state.city}
+              onChange={this.handleTextfieldChange.bind(this, 'city')}
+            />
           </label>
           <br />
           <label htmlFor="country" className={styles.formLabel}>
             Country:
-            <input className={styles.formInput} type="text" id="country" />
+            <input
+              className={
+                shouldMarkError('country')
+                  ? styles.error + ' ' + styles.formInput
+                  : styles.formInput
+              }
+              type="text"
+              id="country"
+              value={this.state.country}
+              onChange={this.handleTextfieldChange.bind(this, 'country')}
+            />
           </label>
           <br />
           <label htmlFor="cfpUrl" className={styles.formLabel}>
             CFP URL:
-            <input className={styles.formInput} type="text" id="cfpUrl" />
+            <input
+              className={
+                shouldMarkError('cfpUrl')
+                  ? styles.error + ' ' + styles.formInput
+                  : styles.formInput
+              }
+              type="text"
+              id="cfpUrl"
+              value={this.state.cfpUrl}
+              onChange={this.handleTextfieldChange.bind(this, 'cfpUrl')}
+            />
           </label>
           <br />
           <label htmlFor="cfpEndDate" className={styles.formLabel}>
@@ -150,11 +228,19 @@ export default class ConferenceNewPage extends Component {
           <br />
           <label htmlFor="twitter" className={styles.formLabel}>
             Twitter handle:
-            <input className={styles.formInput} type="text" id="twitter" />
+            <input
+              className={
+                shouldMarkError('twitterHandle')
+                  ? styles.error + ' ' + styles.formInput
+                  : styles.formInput
+              }
+              type="text"
+              id="twitter"
+              value={this.state.twitterHandle}
+              onChange={this.handleTextfieldChange.bind(this, 'twitterHandle')}
+            />
           </label>
-          <Recaptcha
-            sitekey="6Lf5FEoUAAAAAJtf3_sCGAAzV221KqRS4lAX9AAs"
-          />
+          <Recaptcha sitekey="6Lf5FEoUAAAAAJtf3_sCGAAzV221KqRS4lAX9AAs" />
           <button
             className={styles.formSubmit}
             type="submit"
