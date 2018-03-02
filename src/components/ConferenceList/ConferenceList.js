@@ -12,7 +12,7 @@ class ConferenceList extends Component {
   renderConferences = (conferences) => {
     const {showCFP} = this.props;
     return (
-      <div key={'list'} className={styles.ConferenceList}>
+      <table key="confs" className={styles.ConferenceList}>
         {getConfsMonthsSorted(conferences).map((monthKey) => {
           const month = monthKey.split('-')[1];
           return (
@@ -24,7 +24,7 @@ class ConferenceList extends Component {
             />
           );
         })}
-      </div>
+      </table>
     );
   };
 
@@ -76,19 +76,24 @@ function getMonthName(month) {
 }
 
 function Months({month, conferences, showCFP}) {
+  const conferenceItems = conferences.map((conf) => {
+    return (
+      <ConferenceItem
+        {...conf}
+        key={`${conf.url} ${conf.date}`}
+        showCFP={showCFP}
+      />
+    );
+  });
   return [
-    <Heading key={month} element="h2" level={3}>
-      {getMonthName(month)}
-    </Heading>,
-    conferences.map((conf) => {
-      return (
-        <ConferenceItem
-          {...conf}
-          key={`${conf.url} ${conf.date}`}
-          showCFP={showCFP}
-        />
-      );
-    }),
+    <tr key={month}>
+      <td colspan="4">
+        <Heading element="h2" level={3}>
+          {getMonthName(month)}
+        </Heading>
+      </td>
+    </tr>,
+    conferenceItems,
   ];
 }
 

@@ -23,26 +23,34 @@ export default class ConferenceItem extends PureComponent {
     } = this.props;
 
     return (
-      <div className={styles.ConferenceItem}>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{__html: generateEventJSONLD({name, url, city, country, startDate, endDate})}}
-        />
-        <Heading element="p" level={4}>
-          <Link url={url} external>
-            {name}
-          </Link>
-          {showCFP ? <Cfp url={cfpUrl || url} date={cfpEndDate} /> : null}
-        </Heading>
-        <p className={styles.p}>
-          {`${Location(city, country)} - `}
+      <tr className={styles.ConferenceItem}>
+        <td>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{__html: generateEventJSONLD({name, url, city, country, startDate, endDate})}}
+          />
+          <Heading element="p" level={4}>
+            <Link url={url} external>
+              {name}
+            </Link>
+            {showCFP ? <Cfp url={cfpUrl || url} date={cfpEndDate} /> : null}
+          </Heading>
+        </td>
+        <td>
+          <Location city={city} country={country} />
+        </td>
+        <td>
           <span className={styles.Date}>
             {formatDate(startDate, endDate)}
           </span>
-          <Topics topics={topics} />
+        </td>
+        <td>
+          {topics.map((topic) => `#${topic}`).join(', ')}
+        </td>
+        <p className={styles.p}>
           <Twitter twitter={twitter} />
         </p>
-      </div>
+      </tr>
     );
   }
 }
@@ -57,7 +65,7 @@ function Twitter({twitter}) {
   );
 }
 
-function Location(city, country) {
+function Location({city, country}) {
   if (city && country) {
     return `${city}, ${country}`;
   }
@@ -80,10 +88,3 @@ function Cfp({date, url}) {
   );
 }
 
-
-function Topics({topics}) {
-  return topics.map((topic) => {
-    if (topic === 'general') { return null; }
-    return <img key={topic} alt={topic} className={styles.topic} src={`${topic}.png`} height="20" />;
-  });
-}
