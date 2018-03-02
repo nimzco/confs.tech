@@ -22,6 +22,16 @@ export default class ConferenceNewPage extends Component {
     url: '',
     startDate: null,
     twitterHandle: '',
+    touched: {
+      cfpUrl: false,
+      city: false,
+      country: false,
+      endDate: false,
+      name: false,
+      url: false,
+      startDate: false,
+      twitterHandle: false,
+    },
   };
 
   canBeSubmitted() {
@@ -47,6 +57,12 @@ export default class ConferenceNewPage extends Component {
       twitterHandle: twitterHandle.length === 0,
       url: url.length === 0,
     };
+  };
+
+  handleBlur = (field) => (evt) => {
+    this.setState({
+      touched: { ...this.state.touched, [field]: true },
+    });
   };
 
   handleTextfieldChange = (key, event) => {
@@ -91,10 +107,9 @@ export default class ConferenceNewPage extends Component {
 
     const shouldMarkError = (field) => {
       const hasError = errors[field];
-      // const shouldShow = this.state.touched[field];
+      const shouldShow = this.state.touched[field];
 
-      // return hasError ? shouldShow : false;
-      return hasError;
+      return hasError ? shouldShow : false;
     };
     const isDisabled = Object.keys(errors).some((x) => errors[x]);
 
@@ -122,6 +137,7 @@ export default class ConferenceNewPage extends Component {
               required
               value={this.state.name}
               onChange={this.handleTextfieldChange.bind(this, 'name')}
+              onBlur={this.handleBlur('name')}
             />
           </label>
           <br />
@@ -137,15 +153,18 @@ export default class ConferenceNewPage extends Component {
               value={this.state.url}
               id="url"
               onChange={this.handleTextfieldChange.bind(this, 'url')}
+              onBlur={this.handleBlur('url')}
             />
           </label>
           <br />
           <label htmlFor="type" className={styles.formLabel}>
             Discipline:
             <select name="type" className={styles.formInput}>
-              {Object.keys(TOPICS).map((value, index) =>
-                <option key={index} value={ value }>{TOPICS[value]}</option>
-              )}
+              {Object.keys(TOPICS).map((value, index) => (
+                <option key={index} value={value}>
+                  {TOPICS[value]}
+                </option>
+              ))}
             </select>
           </label>
           <br />
@@ -187,6 +206,7 @@ export default class ConferenceNewPage extends Component {
               id="city"
               value={this.state.city}
               onChange={this.handleTextfieldChange.bind(this, 'city')}
+              onBlur={this.handleBlur('city')}
             />
           </label>
           <br />
@@ -202,6 +222,7 @@ export default class ConferenceNewPage extends Component {
               id="country"
               value={this.state.country}
               onChange={this.handleTextfieldChange.bind(this, 'country')}
+              onBlur={this.handleBlur('country')}
             />
           </label>
           <br />
@@ -217,6 +238,7 @@ export default class ConferenceNewPage extends Component {
               id="cfpUrl"
               value={this.state.cfpUrl}
               onChange={this.handleTextfieldChange.bind(this, 'cfpUrl')}
+              onBlur={this.handleBlur('cfpUrl')}
             />
           </label>
           <br />
@@ -244,6 +266,7 @@ export default class ConferenceNewPage extends Component {
               id="twitter"
               value={this.state.twitterHandle}
               onChange={this.handleTextfieldChange.bind(this, 'twitterHandle')}
+              onBlur={this.handleBlur('twitterHandle')}
             />
           </label>
           <Recaptcha
