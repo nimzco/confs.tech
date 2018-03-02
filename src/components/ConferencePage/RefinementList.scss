@@ -3,7 +3,7 @@
 @import '../style/foundation/spacing';
 
 :global(.ais-RefinementList__root) {
-  margin-bottom: spacing(base);
+  margin-bottom: spacing(tight);
 }
 
 :global(.ais-RefinementList__items) {
@@ -13,9 +13,26 @@
   flex-wrap: wrap;
 }
 
-:global(.ais-RefinementList__item) {
+:global(.ais-RefinementList__item label),
+:global(.ais-RefinementList__itemSelected label:hover) {
+  cursor: pointer;
   margin-right: spacing(base);
   margin-bottom: spacing(tight);
+  background-color: color(gray, lighter);
+  color: color(gray, dark);
+  padding: 0.3em 0.7em;
+  border-radius: 20px;
+  font-size: font-size(filter, refinement);
+  transition: all 100ms linear;
+}
+
+:global(.ais-RefinementList__item label:hover) {
+  background-color: darken(color(gray, lighter), 5);;
+}
+
+:global(.ais-RefinementList__itemSelected label) {
+  background-color: color(gray);
+  color: white;
 }
 
 :global(.ais-RefinementList__itemCheckbox) {
@@ -41,7 +58,7 @@
     content: '';
     position: absolute;
     bottom: -3px;
-    left: 0;
+    right: 0;
     width: 100%;
     height: 3px;
     background: color(accent-2);
@@ -49,24 +66,54 @@
 }
 
 :global(.ais-RefinementList__itemLabel) {
-  @include link();
-
-  &:hover,
-  &.Selected {
-    @include selected-link();
-  }
+  margin-right: 3px;
 }
 
 :global(.ais-RefinementList__itemLabelSelected) {
   @include selected-link();
 }
 
+:global(.ais-RefinementList__itemSelected .ais-RefinementList__itemCount) {
+  color: transparent;
+}
+
+:global(.ais-RefinementList__itemSelected .ais-RefinementList__itemCount::after) {
+  display: none;
+}
+
+:global(.ais-RefinementList__itemSelected .ais-RefinementList__itemCount::before) {
+  content: "x";
+  vertical-align: middle;
+  appearance: none;
+  text-align: center;
+  font-family: "Gill Sans", sans-serif;
+  background-color: lighten(color(gray), 20);
+  border-radius: 30px;
+  border: none;
+  display: inline-block;
+  top: 0;
+  left: 0;
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  padding: 0;
+  font-size: 11px;
+  color: color(gray, lighter);
+  transition: all 100ms linear;
+}
+
+:global(.ais-RefinementList__itemCount::before) {
+  content: "[";
+}
+
+:global(.ais-RefinementList__itemCount::after) {
+  content: "]";
+}
+
 :global(.ais-RefinementList__itemCount) {
+  position: relative;
   border-radius: 31px;
-  background-color: color(gray, lighter);
-  color: color(accent);
   font-size: font-size(filter, itemCount);
-  padding: 2px 10px;
 }
 
 :global(.ais-RefinementList__showMore) {

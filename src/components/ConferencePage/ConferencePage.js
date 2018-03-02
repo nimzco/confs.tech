@@ -111,10 +111,9 @@ class ConferencePage extends Component {
             defaultRefinement={country ? [country] : []}
           />
 
-          <CurrentRefinements
+          {/*<CurrentRefinements
             transformItems={transformCurrentRefinements}
-          />
-
+          />*/}
           {showCFP && <CfpHeader sortByCfpEndDate={this.sortByCfpEndDate} sortBy={sortBy} />}
 
           <ConferenceList
