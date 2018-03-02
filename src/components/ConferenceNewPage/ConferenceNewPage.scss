@@ -50,6 +50,10 @@
   display: inline-block;
 }
 
+:global(.g-recaptcha) {
+  margin-top: spacing();
+}
+
 .error {
   border-color: red;
   color: red;

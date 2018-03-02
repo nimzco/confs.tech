@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Helmet} from 'react-helmet';
 import DatePicker from 'react-datepicker';
+import Recaptcha from 'react-recaptcha';
 
 import styles from './ConferenceNewPage.scss';
 import GithubStar from '../GithubStar';
@@ -151,6 +152,9 @@ export default class ConferenceNewPage extends Component {
             Twitter handle:
             <input className={styles.formInput} type="text" id="twitter" />
           </label>
+          <Recaptcha
+            sitekey="6Lf5FEoUAAAAAJtf3_sCGAAzV221KqRS4lAX9AAs"
+          />
           <button
             className={styles.formSubmit}
             type="submit"
