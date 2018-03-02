@@ -4,6 +4,7 @@ import {isPast, parse, format} from 'date-fns';
 import {connectHits} from 'react-instantsearch/connectors';
 
 import Heading from '../Heading';
+import Link from '../Link';
 import Divider from '../Divider';
 import ConferenceItem from '../ConferenceItem';
 import styles from './ConferenceList.css';

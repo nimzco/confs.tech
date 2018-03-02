@@ -6,7 +6,7 @@ import Recaptcha from 'react-recaptcha';
 import styles from './ConferenceNewPage.scss';
 import GithubStar from '../GithubStar';
 import Heading from '../Heading';
-import {TYPES} from '../config';
+import {TOPICS} from '../config';
 
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
@@ -143,7 +143,7 @@ export default class ConferenceNewPage extends Component {
           <label htmlFor="type" className={styles.formLabel}>
             Discipline:
             <select name="type" className={styles.formInput}>
-              {Object.keys(TYPES).map((key, value) =>
+              {Object.keys(TOPICS).map((key, value) =>
                 <option value={ key }>{TYPES[key]}</option>
               )}
             </select>
