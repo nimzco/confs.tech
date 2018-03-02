@@ -144,7 +144,7 @@ export default class ConferenceNewPage extends Component {
             Discipline:
             <select name="type" className={styles.formInput}>
               {Object.keys(TOPICS).map((key, value) =>
-                <option value={ key }>{TYPES[key]}</option>
+                <option value={ key }>{TOPICS[key]}</option>
               )}
             </select>
           </label>
