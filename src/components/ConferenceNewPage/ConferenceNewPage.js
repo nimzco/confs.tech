@@ -55,7 +55,7 @@ export default class ConferenceNewPage extends Component {
     });
   };
 
-  handleEndDateChange = (date) => {
+  handleDateChange = (key, date) => {
     this.setState({
       [key]: date,
     });
@@ -143,8 +143,8 @@ export default class ConferenceNewPage extends Component {
           <label htmlFor="type" className={styles.formLabel}>
             Discipline:
             <select name="type" className={styles.formInput}>
-              {Object.keys(TOPICS).map((key, value) =>
-                <option value={ key }>{TOPICS[key]}</option>
+              {Object.keys(TOPICS).map((value, index) =>
+                <option key={index} value={ value }>{TOPICS[value]}</option>
               )}
             </select>
           </label>
