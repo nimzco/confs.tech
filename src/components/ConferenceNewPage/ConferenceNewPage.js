@@ -80,6 +80,7 @@ export default class ConferenceNewPage extends Component {
   // executed once the captcha has been verified
   // can be used to post forms, redirect, etc.
   verifyCallback = (response) => {
+    console.log(response);
     this.setState({ captchaResponse: response });
   };
 
@@ -112,6 +113,11 @@ export default class ConferenceNewPage extends Component {
       return hasError ? shouldShow : false;
     };
     const isDisabled = Object.keys(errors).some((x) => errors[x]);
+
+    // specifying your onload callback function for ReCaptcha
+    const callbackCaptchaLoaded = function() {
+      console.log('Done loading catpcha');
+    };
 
     return (
       <div>
@@ -271,7 +277,9 @@ export default class ConferenceNewPage extends Component {
           </label>
           <Recaptcha
             sitekey="6Lf5FEoUAAAAAJtf3_sCGAAzV221KqRS4lAX9AAs"
+            render="explicit"
             verifyCallback={this.verifyCallback}
+            onloadCallback={callbackCaptchaLoaded}
           />
           <button
             className={styles.formSubmit}
