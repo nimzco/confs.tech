@@ -119,6 +119,12 @@ export default class ConferenceNewPage extends Component {
       console.log('Done loading catpcha');
     };
 
+    const isShowGenericError = function(field, text) {
+      if (shouldMarkError(field)) {
+        return <span className={styles.errorText}>{text}</span>;
+      }
+    };
+
     return (
       <div>
         <Helmet>
@@ -129,7 +135,6 @@ export default class ConferenceNewPage extends Component {
           <GithubStar />
         </div>
         <form>
-          <pre>{JSON.stringify(errors)}</pre>
           <label htmlFor="name" className={styles.formLabel}>
             Name:
             <input
@@ -146,6 +151,7 @@ export default class ConferenceNewPage extends Component {
               onBlur={this.handleBlur('name')}
             />
           </label>
+          {isShowGenericError('name', 'Name is required.')}
           <br />
           <label htmlFor="url" className={styles.formLabel}>
             URL:
@@ -162,6 +168,7 @@ export default class ConferenceNewPage extends Component {
               onBlur={this.handleBlur('url')}
             />
           </label>
+          {isShowGenericError('url', 'Url is required.')}
           <br />
           <label htmlFor="type" className={styles.formLabel}>
             Discipline:
@@ -215,6 +222,7 @@ export default class ConferenceNewPage extends Component {
               onBlur={this.handleBlur('city')}
             />
           </label>
+          {isShowGenericError('city', 'City is required.')}
           <br />
           <label htmlFor="country" className={styles.formLabel}>
             Country:
@@ -231,6 +239,7 @@ export default class ConferenceNewPage extends Component {
               onBlur={this.handleBlur('country')}
             />
           </label>
+          {isShowGenericError('country', 'Country is required.')}
           <br />
           <label htmlFor="cfpUrl" className={styles.formLabel}>
             CFP URL:
@@ -247,6 +256,7 @@ export default class ConferenceNewPage extends Component {
               onBlur={this.handleBlur('cfpUrl')}
             />
           </label>
+          {isShowGenericError('cfpUrl', 'CFP URL is required.')}
           <br />
           <label htmlFor="cfpEndDate" className={styles.formLabel}>
             CFP end date:
@@ -275,6 +285,7 @@ export default class ConferenceNewPage extends Component {
               onBlur={this.handleBlur('twitterHandle')}
             />
           </label>
+          {isShowGenericError('twitterHandle', 'Twitter handle is required.')}
           <Recaptcha
             sitekey="6Lf5FEoUAAAAAJtf3_sCGAAzV221KqRS4lAX9AAs"
             render="explicit"
