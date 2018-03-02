@@ -12,6 +12,7 @@ import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 /* eslint-disable */
 export default class ConferenceNewPage extends Component {
   state = {
+    captchaResponse: null,
     cfpUrl: '',
     city: '',
     country: '',
@@ -22,9 +23,6 @@ export default class ConferenceNewPage extends Component {
     twitterHandle: '',
   };
 
-<<<<<<< HEAD
-  handleDateChange = (key, date) => {
-=======
   canBeSubmitted() {
     const errors = this.validate(
       this.state.name,
@@ -57,24 +55,27 @@ export default class ConferenceNewPage extends Component {
   };
 
   handleEndDateChange = (date) => {
->>>>>>> test add validation
     this.setState({
       [key]: date,
     });
   };
 
+  // executed once the captcha has been verified
+  // can be used to post forms, redirect, etc.
+  verifyCallback = (response) => {
+    this.setState({ captchaResponse: response });
+  };
+
   submitForm = (event) => {
     event.preventDefault();
-<<<<<<< HEAD
-    console.log(this.state);
-=======
-    console.log('wat');
-    if (!this.canBeSubmitted()) {
+    console.log('captcha response =', this.state.captchaResponse);
+
+    if (!this.canBeSubmitted() && this.state.captchaResponse !== null) {
       event.preventDefault();
       console.log('error here');
       return;
     }
->>>>>>> test add validation
+    console.log(this.state);
   };
 
   render() {
@@ -240,7 +241,10 @@ export default class ConferenceNewPage extends Component {
               onChange={this.handleTextfieldChange.bind(this, 'twitterHandle')}
             />
           </label>
-          <Recaptcha sitekey="6Lf5FEoUAAAAAJtf3_sCGAAzV221KqRS4lAX9AAs" />
+          <Recaptcha
+            sitekey="6Lf5FEoUAAAAAJtf3_sCGAAzV221KqRS4lAX9AAs"
+            verifyCallback={this.verifyCallback}
+          />
           <button
             className={styles.formSubmit}
             type="submit"
