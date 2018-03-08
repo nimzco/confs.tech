@@ -61,5 +61,14 @@
     "city": "Paris",
     "country": "France",
     "twitter": "@dotCSS"
+  },
+  {
+    "name": "Chris is Crazy",
+    "url": "chris.com",
+    "startDate": null,
+    "endDate": null,
+    "city": "New York",
+    "country": "U.S.A.",
+    "topic": "css"
   }
 ]
