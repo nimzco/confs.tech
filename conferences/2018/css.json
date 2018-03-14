@@ -61,5 +61,17 @@
     "city": "Paris",
     "country": "France",
     "twitter": "@dotCSS"
+  },
+  {
+    "name": "Test",
+    "url": "conf.com",
+    "startDate": "2018-03-14",
+    "endDate": null,
+    "city": "Nice",
+    "country": "France",
+    "twitter": null,
+    "topic": "css",
+    "cfpUrl": "",
+    "cfpEndDate": null
   }
 ]
