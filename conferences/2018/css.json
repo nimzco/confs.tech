@@ -61,5 +61,17 @@
     "city": "Paris",
     "country": "France",
     "twitter": "@dotCSS"
+  },
+  {
+    "name": "qwd",
+    "url": "wqd",
+    "startDate": "2018-03-06",
+    "endDate": null,
+    "city": "qwd",
+    "country": "wqd",
+    "twitter": null,
+    "topic": "css",
+    "cfpUrl": "",
+    "cfpEndDate": null
   }
 ]
