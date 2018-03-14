@@ -61,5 +61,17 @@
     "city": "Paris",
     "country": "France",
     "twitter": "@dotCSS"
+  },
+  {
+    "name": "Nima Izadi",
+    "url": "qwd",
+    "startDate": "2018-03-14",
+    "endDate": "2018-03-14",
+    "city": "Montréal",
+    "country": "Canada",
+    "twitter": null,
+    "topic": "css",
+    "cfpUrl": "",
+    "cfpEndDate": null
   }
 ]
