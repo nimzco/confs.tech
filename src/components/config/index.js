@@ -2,6 +2,7 @@ export const CURRENT_YEAR = (new Date()).getFullYear() - 1;
 
 export const TOPICS = {
   javascript: 'JavaScript',
+  graphql: 'GraphQL',
   css: 'CSS',
   ux: 'Design / UX',
   ruby: 'Ruby',
@@ -24,6 +25,7 @@ const REPO_URLS = {
   ios: DEFAULT_REPO_URL,
   android: DEFAULT_REPO_URL,
   data: DEFAULT_REPO_URL,
+  graphql: DEFAULT_REPO_URL,
   'tech-comm': DEFAULT_REPO_URL,
   general: DEFAULT_REPO_URL,
 };

@@ -10,6 +10,7 @@ Where should it go?
 - [ ] PHP
 - [ ] Data
 - [ ] Tech-comm
+- [ ] GraphQL
 - [ ] General
 
 ```json

@@ -10,6 +10,7 @@ List of conferences pulled out from [JSON files](https://github.com/tech-confere
 - [See all Technical communication conferences](https://confs.tech/tech-comm)
 - [See all Data conferences](https://confs.tech/data)
 - [See all Android conferences](https://confs.tech/android)
+- [See all GraphQL conferences](https://confs.tech/graphql)
 - [See general conferences](https://confs.tech/general)
 
 Don't hesitate to add new conferences by [creating an issue](https://github.com/tech-conferences/confs.tech/issues/new) or creating a pull request. 🤓
